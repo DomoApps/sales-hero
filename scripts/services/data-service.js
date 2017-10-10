@@ -1,4 +1,4 @@
-(function() {
+var DataService = (function(domo, Query) {
   function getSummary(datefilter) {  	
     return Promise.all([
  	  	// TODO: replace with domo.js queries
@@ -39,9 +39,9 @@
   	]);
   }
 
-  window.DataService = {
+  return {
     getSummary: getSummary,
     getRepPerformance: getRepPerformance,
     getSalesPerformance: getSalesPerformance
 	};
-})();
+})(domo, Query);

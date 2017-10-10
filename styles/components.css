@@ -1,9 +1,9 @@
 .header {
 	display: flex;
 	flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    margin-bottom: 10px;
+	justify-content: flex-start;
+	align-items: center;
+	margin-bottom: 10px;
 }
 
 .header h1 {
@@ -14,31 +14,31 @@
 }
 
 .select-style {
-    background-color: rgba(255,255,255,1);
-    border: 1px solid rgba(0,0,0,0.2);
-    color: rgba(0,0,0,0.6);
-    width: 150px;
-    border-radius: 3px;
-    overflow: hidden;
-    background: #fafafa url("../assets/chevron-down.png") no-repeat 94% 50%;
-    background-size: 15px;
+	background-color: rgba(255, 255, 255, 1);
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	color: rgba(0, 0, 0, 0.6);
+	width: 150px;
+	border-radius: 3px;
+	overflow: hidden;
+	background: #fafafa url("../assets/chevron-down.png") no-repeat 94% 50%;
+	background-size: 15px;
 }
 
 .select-style select {
-    padding: 9px 12px 8px 12px;
-    font-weight: 600;
-    width: 130%;
-    border: none;
-    box-shadow: none;
-    background: transparent;
-    background-image: none;
-    -webkit-appearance: none;
-    font-size: 12px;
-    cursor: pointer;
+	padding: 9px 12px 8px 12px;
+	font-weight: 600;
+	width: 130%;
+	border: none;
+	box-shadow: none;
+	background: transparent;
+	background-image: none;
+	-webkit-appearance: none;
+	font-size: 12px;
+	cursor: pointer;
 }
 
 .select-style select:focus {
-    outline: none;
+	outline: none;
 }
 
 .card {
@@ -54,9 +54,9 @@
 	font-weight: 600;
 	text-transform: uppercase;
 	font-size: 11px;
-  	white-space: nowrap;
-  	overflow: hidden;
-  	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .card.-hero .card-title {
@@ -78,10 +78,21 @@
 	font-size: 44px;
 }
 
-.summary-container .card:nth-child(2) .-numeric { color: #fb8d33; }
-.summary-container .card:nth-child(3) .-numeric { color: #fbad56; }
-.summary-container .card:nth-child(4) .-numeric { color: #fccf84; }
-.summary-container .card:nth-child(5) .-numeric { color: #fdecad; }
+.summary-container .card:nth-child(2) .-numeric {
+	color: #fb8d33;
+}
+
+.summary-container .card:nth-child(3) .-numeric {
+	color: #fbad56;
+}
+
+.summary-container .card:nth-child(4) .-numeric {
+	color: #fccf84;
+}
+
+.summary-container .card:nth-child(5) .-numeric {
+	color: #fdecad;
+}
 
 .rep-content {
 	flex: 1;
@@ -130,5 +141,5 @@
 .c3 .c3-grid line {
 	stroke: #333;
 	stroke-opacity: 0.85;
-    stroke-dasharray: inherit;
+	stroke-dasharray: inherit;
 }

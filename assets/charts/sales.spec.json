@@ -1,0 +1,76 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v3.0.json",
+  
+  "width": 350,
+  "height": 450,
+  "padding": 5,
+  "autosize": { "type": "pad", "resize": true },
+
+  "config": {
+    "axis": {
+      "labelColor": "#fff",
+      "labelFontSize": 10,
+      "labelPadding": 10,
+      "ticks": false
+    }
+  },
+
+  "data": [
+    {
+      "name": "table",
+      "values": [
+        {"date": "2014-01-01", "amount": 28},
+        {"date": "2014-01-04", "amount": 22},
+        {"date": "2014-01-05", "amount": 26},
+        {"date": "2014-01-06", "amount": 56},
+        {"date": "2014-01-07", "amount": 46},
+        {"date": "2014-01-08", "amount": 18},
+        {"date": "2014-01-09", "amount": 89},
+        {"date": "2014-01-10", "amount": 48},
+        {"date": "2014-01-11", "amount": 65}
+      ]
+    }
+  ],
+
+  "scales": [
+    {
+      "name": "xscale",
+      "type": "band",
+      "domain": {"data": "table", "field": "date"},
+      "range": "width",
+      "nice": "day"
+    },
+    {
+      "name": "yscale",
+      "domain": {"data": "table", "field": "amount"},
+      "nice": true,
+      "range": "height"
+    }
+  ],
+
+  "axes": [
+    { "orient": "bottom", "scale": "xscale", "labelOverlap": true },
+    { "orient": "left", "scale": "yscale" }
+  ],
+
+  "marks": [
+    {
+      "type": "rect",
+      "from": {"data":"table"},
+      "encode": {
+        "enter": {
+          "x": {"scale": "xscale", "field": "date" },
+          "width": { "scale": "xscale", "band": 0.90 },
+          "y": {"scale": "yscale", "field": "amount"},
+          "y2": {"scale": "yscale", "value": 0}
+        },
+        "update": {
+          "fill": {"value": "#e45621"}
+        },
+        "hover": {
+          "fill": {"value": "#9ce"}
+        }
+      }
+    }
+  ]
+}
