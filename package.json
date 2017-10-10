@@ -1,0 +1,11 @@
+{
+  "name": "sample-app-training",
+  "version": "1.0.0",
+  "description": "Sample Dev Studio Domo App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "appteam6@domo.com",
+  "license": "MIT"
+}

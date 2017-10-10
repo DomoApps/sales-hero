@@ -1,0 +1,20 @@
+{
+  "name": "Galactic Sales: Normal",
+  "version": "1.0.0",
+  "size": {
+    "width": 5,
+    "height": 3
+  },
+  "mapping": [{
+    "alias": "sales",
+    "dataSetId": "93a5b974-1aac-49fc-ba9a-a67dff658be6",
+    "fields": [
+      { "alias": "id", "columnName": "User ID" },
+      { "alias": "rep", "columnName": "Sales Rep" },
+      { "alias": "email", "columnName": "Rep Email" },
+      { "alias": "client", "columnName": "Client Name" },
+      { "alias": "date", "columnName": "Sales Date" },
+      { "alias": "amount", "columnName": "Sales Amount" }
+    ]
+  }]
+}
