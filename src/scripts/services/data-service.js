@@ -78,7 +78,7 @@ var DataService = (function(domo, Query) {
 				return {
 					label: 'Sale Count',
 					value: data[0].rep,
-					format: '0.0a'
+					format: '0'
 				};
 			})			
 	}

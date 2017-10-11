@@ -12,10 +12,6 @@
       "dataSetId": "93a5b974-1aac-49fc-ba9a-a67dff658be6",
       "fields": [
         {
-          "alias": "id",
-          "columnName": "User ID"
-        },
-        {
           "alias": "rep",
           "columnName": "Sales Rep"
         },

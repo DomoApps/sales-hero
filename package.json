@@ -7,7 +7,7 @@
     "prestart": "npm run copy",
     "start": "domo dev",
     "prepublish": "npm run copy",
-    "publish": "domo publish"
+    "publish": "domo publish",
   },
   "author": "appteam6@domo.com",
   "license": "MIT",
