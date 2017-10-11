@@ -22,8 +22,8 @@ var ChartService = (function (vega, vegaTooltip, numeral) {
     });    
   }
 
-  function formatCurrency(number) {
-    var format = (number >= 1000) ? '$0.00a' : '$0';
+  function formatCurrency(number, fm) {
+    var format = (fm) ? fm : '$0.0a';
     return numeral(number).format(format);
   }
 

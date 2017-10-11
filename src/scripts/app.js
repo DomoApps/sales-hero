@@ -67,7 +67,7 @@
         var html = `
           <div class="card">
             <div class="card-title">${row.label}</div>
-            <div class="card-content -numeric">${ChartService.formatCurrency(row.value)}</div>
+            <div class="card-content -numeric">${ChartService.formatCurrency(row.value, row.format)}</div>
           </div>
         `;
 
