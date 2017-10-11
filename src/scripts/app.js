@@ -1,26 +1,47 @@
 (function(DataService, ChartService) {
   var SELECTORS = {
-    filter: 'select[name="date-grain"]',
+    repFilter: 'select[name="rep-name"]',
     summaryContainer: '.summary-container',
-    repList: '.rep-list',
     repChart: '.performance-chart',
     salesChart: '.sales-chart',
   };
 
   window.onload = function() {
-    document.querySelector(SELECTORS.filter).onchange = handleFilterChange;
-    handleFilterChange();
+    document.querySelector(SELECTORS.repFilter).onchange = handleFilterChange;
+    
+    DataService.getRepList().then(function(list) {
+      // get the rep filter menu
+      var select = document.querySelector(SELECTORS.repFilter);
+      
+      // add a default "Team" option
+      var defaultOption = document.createElement('option');
+      defaultOption.text = 'Full Team';
+      defaultOption.value = '';
+      select.appendChild(defaultOption);
+
+      // add each rep from the data
+      list.forEach(function(name) {
+        var option = document.createElement('option');
+        option.value, option.text = name;
+        select.appendChild(option);
+      });
+
+      // trigger app render
+      handleFilterChange();
+    });    
   }
 
   function handleFilterChange() {
-    var grain = getDateGrain();
-    buildSummary(grain);
+    var selectedRep = getSelectedSalesRep();
+    
+    buildTopPerformers();
+    buildSummaryTiles(selectedRep);
+    buildSalesRepPerformance(selectedRep);
   }
 
-  function getDateGrain() {
-    // get the value from the select menu
-    var grain = document.querySelector(SELECTORS.filter).value;
-    return (grain === '' || !grain) ? null : grain;
+  function getSelectedSalesRep() {
+    var rep = document.querySelector(SELECTORS.dateFilter).value;
+    return (rep === '' || !rep) ? null : rep; 
   }
 
   function buildSummary(grain) {

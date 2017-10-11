@@ -1,11 +1,21 @@
 {
-  "name": "sample-app-training",
+  "name": "sales-hero",
   "version": "1.0.0",
-  "description": "Sample Dev Studio Domo App",
-  "main": "index.js",
+  "description": "Sample Domo App",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "copy": "node ./scripts/copyAssets.js",
+    "prestart": "npm run copy",
+    "start": "domo dev",
+    "prepublish": "npm run copy",
+    "publish": "domo publish"
   },
   "author": "appteam6@domo.com",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@domoinc/query": "latest",
+    "ryuu.js": "^2.5.8"
+  },
+  "devDependencies": {
+    "fs-extra": "^4.0.2"
+  }
 }

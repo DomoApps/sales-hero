@@ -5,29 +5,15 @@
     <title>Simple Sales</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vega-tooltip/0.4.4/vega-tooltip.min.css" />
-    <link rel="stylesheet" href="styles/app.css" />
+    <link rel="stylesheet" href="./src/styles/app.css" />
 </head>
 
 <body>
     <div class="app-container">
         <div class="header">
             <h1>Sales Dashboard</h1>
-            <div class="select-style">
-
-                <!-- This menu is populated by JavaScript in the app.js file -->
-                <select name="date-grain">
-                    <option value="todate week">Current Week</option>
-                    <option value="todate month">Current Month</option>
-                    <option value="todate quarter">Current Quarter</option>
-                    <option value="todate year">Current Year</option>
-                    <option value="last week">Last Week</option>
-                    <option value="last month">Last Month</option>
-                    <option value="last 3 months">Last 3 Months</option>
-                    <option value="last 6 months">Last 6 Months</option>
-                    <option value="last year">Last Year</option>
-                    <option value="">All Time</option>
-                </select>
-            </div>
+            <!-- This menu is populated by JavaScript in the app.js file -->
+            <div class="select-style"><select name="rep-name"></select></div>
         </div>
 
         <!-- Summary tiles are added dynamically to this container -->
@@ -62,7 +48,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vega/3.0.5/vega.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vega-tooltip/0.4.4/vega-tooltip.min.js"></script>
     
-    <!-- Helps with formatting currencies -->
+    <!-- Helps with formatting numbers -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
 
     <!-- 
@@ -73,21 +59,21 @@
         Using a bundler like Webpack or Browserify will also facilitate loading
         node_modules into your application.
     -->
-    <script src="scripts/lib/query.js"></script>
+    <script src="./src/scripts/lib/query.js"></script>
     
     <!-- 
         domo.js is an optional library that is included in every "Hello World" 
         projects from "domo init". This can also be installed via NPM. See
         https://www.npmjs.com/package/ryuu.js for more details
      -->
-    <script src="scripts/lib/domo.js"></script>
+    <script src="./src/scripts/lib/domo.js"></script>
 
     <!-- Helper services -->
-    <script src="scripts/services/data-service.js"></script>
-    <script src="scripts/services/chart-service.js"></script>
+    <script src="./src/scripts/services/data-service.js"></script>
+    <script src="./src/scripts/services/chart-service.js"></script>
     
     <!-- Main JS file -->
-    <script src="scripts/app.js"></script>
+    <script src="./src/scripts/app.js"></script>
 </body>
 
 </html>

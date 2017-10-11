@@ -1,5 +1,4 @@
 var ChartService = (function (vega, vegaTooltip, numeral) {
-  
   function render(spec, element) {
     var view = new vega
       .View(vega.parse(spec))
