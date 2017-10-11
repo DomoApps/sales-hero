@@ -1,4 +1,4 @@
-var ChartService = (function (vega, vegaTooltip) {
+var ChartService = (function (vega, vegaTooltip, numeral) {
   
   function render(spec, element) {
     var view = new vega
@@ -24,22 +24,8 @@ var ChartService = (function (vega, vegaTooltip) {
   }
 
   function formatCurrency(number) {
-    let append;
-    let rounded = number;
-    if (number >= 1000000000) {
-      append = 'B';
-      rounded = (number / 1000000000).toFixed(1);
-    } else if (number >= 1000000) {
-      append = 'M';
-      rounded = (number / 1000000).toFixed(1);
-    } else if (number >= 1000) {
-      append = 'K';
-      rounded = (number / 1000).toFixed(1);
-    }
-
-    return append
-      ? `$${rounded}${append}`
-      : `$${rounded}`;
+    var format = (number >= 1000) ? '$0.00a' : '$0';
+    return numeral(number).format(format);
   }
 
   function drawRepChart(element, data) {
@@ -71,4 +57,4 @@ var ChartService = (function (vega, vegaTooltip) {
     drawRepChart: drawRepChart, 
     drawSalesChart: drawSalesChart
   };
-})(vega, vegaTooltip);
+})(vega, vegaTooltip, numeral);
