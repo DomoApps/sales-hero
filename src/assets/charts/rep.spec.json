@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v3.0.json",
-  "width": 500,
+  "width": 445,
   "height": 480,
   "padding": 5,
   "autosize": { "type": "pad", "resize": true },
@@ -13,17 +13,6 @@
       "ticks": false
     }
   },
-
-  "signals": [
-    {
-      "name": "tooltip",
-      "value": {},
-      "on": [
-        {"events": "rect:mouseover", "update": "datum"},
-        {"events": "rect:mouseout",  "update": "{}"}
-      ]
-    }
-  ],
 
   "data": [
     {
@@ -57,25 +46,6 @@
         },
         "hover": {
           "fill": {"value": "#FDECB0"}
-        }
-      }
-    },
-    {
-      "type": "text",
-      "encode": {
-        "enter": {
-          "align": {"value": "center"},
-          "baseline": {"value": "bottom"},
-          "fill": {"value": "#333"}
-        },
-        "update": {
-          "x": {"scale": "x", "signal": "tooltip.rep", "band": 0.5},
-          "y": {"scale": "y", "signal": "tooltip.amount", "offset": -2},
-          "text": {"signal": "tooltip.amount"},
-          "fillOpacity": [
-            {"test": "datum === tooltip", "value": 0},
-            {"value": 1}
-          ]
         }
       }
     }

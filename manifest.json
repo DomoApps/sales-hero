@@ -1,5 +1,6 @@
 {
-  "name": "Dev Studio Training: Simple Sample",
+  "name": "Sales Hero",
+  "description": "Simple Domo App",
   "version": "1.0.0",
   "size": {
     "width": 5,
@@ -36,6 +37,12 @@
         }
       ]
     }
+  ],
+  "ignore": [
+    "package.json",
+    "package-lock.json",
+    "scripts/*",
+    "node_modules/*"
   ],
   "id": "b94db842-b745-48ce-8918-4000f002e193"
 }

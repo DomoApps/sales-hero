@@ -30,7 +30,7 @@ var ChartService = (function (vega, vegaTooltip, numeral) {
   function drawRepChart(element, data) {
     vega
       .loader()
-      .load('/assets/charts/rep.spec.json')
+      .load('/src/assets/charts/rep.spec.json')
       .then(function (config) {
         var json = JSON.parse(config);
         json.data[0].values = data;
@@ -42,7 +42,7 @@ var ChartService = (function (vega, vegaTooltip, numeral) {
   function drawSalesChart(element, data) {
     vega
       .loader()
-      .load('/assets/charts/sales.spec.json')
+      .load('/src/assets/charts/sales.spec.json')
       .then(function (config) {
         var json = JSON.parse(config);
         json.data[0].values = data;

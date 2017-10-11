@@ -4,6 +4,7 @@
     summaryContainer: '.summary-container',
     repChart: '.performance-chart',
     salesChart: '.sales-chart',
+    loader: '.loader',
   };
 
   window.onload = function() {
@@ -26,26 +27,34 @@
         select.appendChild(option);
       });
 
-      // trigger app render
+      // one-time rendering of performance rankings
+      buildTopPerformers();
+
+      // update filter-based values
       handleFilterChange();
     });    
   }
 
   function handleFilterChange() {
+    isLoading(true);
     var selectedRep = getSelectedSalesRep();
     
-    buildTopPerformers();
-    buildSummaryTiles(selectedRep);
-    buildSalesRepPerformance(selectedRep);
+    Promise.all([
+      buildSummaryTiles(selectedRep),
+      buildSalesRepPerformance(selectedRep)
+    ]).then(function() {
+      isLoading(false);
+    })
   }
 
+
   function getSelectedSalesRep() {
-    var rep = document.querySelector(SELECTORS.dateFilter).value;
+    var rep = document.querySelector(SELECTORS.repFilter).value;
     return (rep === '' || !rep) ? null : rep; 
   }
 
-  function buildSummary(grain) {
-    DataService.getSummary(grain).then(function(data) {
+  function buildSummaryTiles(filter) {
+    return DataService.getSummary(filter).then(function(data) {
       var container = document.querySelector(SELECTORS.summaryContainer);
       
       // remove existing children
@@ -64,24 +73,30 @@
 
         container.insertAdjacentHTML('beforeend', html);
       });
-
-      // wait for summary before drawing charts
-      buildRepPerformance(grain);
-      buildSalesPerformance(grain);
     });
   }
 
-  function buildRepPerformance(grain) {
-    DataService.getRepPerformance(grain).then(function(data) {
+  function buildTopPerformers(filter) {
+    return DataService.getRepPerformance(filter).then(function(data) {
       const chart = document.querySelector(SELECTORS.repChart);
       ChartService.drawRepChart(chart, data)
     });
   }
 
-  function buildSalesPerformance(grain) {
-    DataService.getSalesPerformance(grain).then(data => {
+  function buildSalesRepPerformance(filter) {
+    return DataService.getSalesPerformance(filter).then(data => {
       const chart = document.querySelector(SELECTORS.salesChart);
       ChartService.drawSalesChart(chart, data);
     });
+  }
+
+  function isLoading(loading) {
+    var loader = document.querySelector(SELECTORS.loader);
+
+    if (loading) {
+      loader.style.visibility = 'visible';
+    } else {
+      loader.style.visibility = 'hidden';
+    }
   }
 })(DataService, ChartService);
