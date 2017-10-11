@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Simple Sales</title>
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vega-tooltip/0.4.4/vega-tooltip.min.css" />
     <link rel="stylesheet" href="./src/styles/app.css" />
 </head>
@@ -18,12 +18,12 @@
 
         <!-- Summary tiles are added dynamically to this container -->
         <div class="container-row summary-container"></div>
-        
+
         <div class="container-row chart-container">
             <div class="card -hero">
                 <div class="card-title">Sales Ranking</div>
                 <div class="card-content">
-                    
+
                     <!-- Chart container for Rep Ranking -->
                     <div class="performance-chart"></div>
                 </div>
@@ -40,12 +40,15 @@
 
         <div class="loader">
             <div class="spinner">
-                <div class="double-bounce1"></div>
-                <div class="double-bounce2"></div>
+                <div class="rect1"></div>
+                <div class="rect2"></div>
+                <div class="rect3"></div>
+                <div class="rect4"></div>
+                <div class="rect5"></div>
             </div>
         </div>
     </div>
-    
+
     <!-- 
         Vega has become a very popular library for creating D3 visuals, but there
         are many other options available. Domo doesn't recommend one library over
@@ -54,7 +57,7 @@
     -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vega/3.0.5/vega.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vega-tooltip/0.4.4/vega-tooltip.min.js"></script>
-    
+
     <!-- Helps with formatting numbers -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
 
@@ -67,7 +70,7 @@
         node_modules into your application.
     -->
     <script src="./src/scripts/lib/query.js"></script>
-    
+
     <!-- 
         domo.js is an optional library that is included in every "Hello World" 
         projects from "domo init". This can also be installed via NPM. See
@@ -78,7 +81,7 @@
     <!-- Helper services -->
     <script src="./src/scripts/services/data-service.js"></script>
     <script src="./src/scripts/services/chart-service.js"></script>
-    
+
     <!-- Main JS file -->
     <script src="./src/scripts/app.js"></script>
 </body>

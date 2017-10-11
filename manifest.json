@@ -42,7 +42,8 @@
     "package.json",
     "package-lock.json",
     "scripts/*",
-    "node_modules/*"
+    "node_modules/*",
+    "data/*"
   ],
   "id": "b94db842-b745-48ce-8918-4000f002e193"
 }
