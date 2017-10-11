@@ -2,6 +2,9 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Simple Sales</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vega-tooltip/0.4.4/vega-tooltip.min.css" />
     <link rel="stylesheet" href="styles/app.css" />
 </head>
 
@@ -10,6 +13,8 @@
         <div class="header">
             <h1>Sales Dashboard</h1>
             <div class="select-style">
+
+                <!-- This menu is populated by JavaScript in the app.js file -->
                 <select name="date-grain">
                     <option value="todate week">Current Week</option>
                     <option value="todate month">Current Month</option>
@@ -24,26 +29,42 @@
                 </select>
             </div>
         </div>
+
+        <!-- Summary tiles are added dynamically to this container -->
         <div class="container-row summary-container"></div>
+        
         <div class="container-row chart-container">
             <div class="card -hero">
                 <div class="card-title">Top Reps</div>
                 <div class="card-content">
-                    <div class="rep-list rep-content"></div>
-                    <div class="performance-chart rep-content"></div>
+                    
+                    <!-- Chart container for Rep Ranking -->
+                    <div class="performance-chart"></div>
                 </div>
             </div>
             <div class="card -hero">
                 <div class="card-title">Sales by Date</div>
                 <div class="card-content">
-                    <sales-chart></sales-chart>
+
+                    <!-- Chart container for trending sales -->
+                    <div class="sales-chart"></div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vega/3.0.5/vega.min.js"></script>
     
+    <!-- 
+        Vega has become a very popular library for creating D3 visuals, but there
+        are many other options available. Domo doesn't recommend one library over
+        another. As long as it's a JavaScript library that works in the browser,
+        you should be OK to use it.
+    -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vega/3.0.5/vega.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vega-tooltip/0.4.4/vega-tooltip.min.js"></script>
+    
+    <!-- Helps with formatting currencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+
     <!-- 
         We've loaded the Query library like this, but the recommended
         approach is via NPM. See https://www.npmjs.com/package/@domoinc/query

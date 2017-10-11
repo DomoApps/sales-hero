@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega/v3.0.json",
   
   "width": 350,
-  "height": 450,
+  "height": 480,
   "padding": 5,
   "autosize": { "type": "pad", "resize": true },
 
@@ -68,7 +68,7 @@
           "fill": {"value": "#e45621"}
         },
         "hover": {
-          "fill": {"value": "#9ce"}
+          "fill": {"value": "#FDECB0"}
         }
       }
     }

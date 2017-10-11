@@ -3,7 +3,8 @@
     filter: 'select[name="date-grain"]',
     summaryContainer: '.summary-container',
     repList: '.rep-list',
-    perfChart: '.performance-chart',
+    repChart: '.performance-chart',
+    salesChart: '.sales-chart',
   };
 
   window.onload = function() {
@@ -50,32 +51,15 @@
   }
 
   function buildRepPerformance(grain) {
-    DataService.getRepPerformance(grain).then(data => {
-    const container = document.querySelector(SELECTORS.repList);
-      while (container.firstChild) {
-        container.removeChild(container.firstChild);
-      }
-
-      const chart = document.querySelector(SELECTORS.perfChart);
-      const chartData = data.map(row => row.amount);
-      ChartService.drawRepChart(chart, chartData)
-
-      data.forEach(row => {
-        const html = `
-          <div class="rep">
-            <img class="rep-avatar" src="${ row.avatar }" />
-            <div class="rep-name">${ row.rep }</div>
-          </div>
-        `;
-
-        container.insertAdjacentHTML('beforeend', html);
-      });
+    DataService.getRepPerformance(grain).then(function(data) {
+      const chart = document.querySelector(SELECTORS.repChart);
+      ChartService.drawRepChart(chart, data)
     });
   }
 
   function buildSalesPerformance(grain) {
     DataService.getSalesPerformance(grain).then(data => {
-      const chart = document.getElementsByTagName('sales-chart')[0];
+      const chart = document.querySelector(SELECTORS.salesChart);
       ChartService.drawSalesChart(chart, data);
     });
   }

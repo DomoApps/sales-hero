@@ -1,0 +1,123 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v3.0.json",
+  "width": 500,
+  "height": 480,
+  "padding": 5,
+  "autosize": { "type": "pad", "resize": true },
+
+  "config": {
+    "axis": {
+      "labelColor": "#fff",
+      "labelFontSize": 10,
+      "labelPadding": 10,
+      "ticks": false
+    }
+  },
+
+  "signals": [
+    {
+      "name": "tooltip",
+      "value": {},
+      "on": [
+        {"events": "rect:mouseover", "update": "datum"},
+        {"events": "rect:mouseout",  "update": "{}"}
+      ]
+    }
+  ],
+
+  "data": [
+    {
+      "name": "table",
+      "values": [
+        {"rep": "Darth Vader", "amount": 28},
+        {"rep": "Yoda", "amount": 22},
+        {"rep": "Kara Nezuma", "amount": 26},
+        {"rep": "Delos Joyriak", "amount": 56},
+        {"rep": "Myles Rayley", "amount": 46},
+        {"rep": "Sel Sage", "amount": 18},
+        {"rep": "Testa Green", "amount": 89},
+        {"rep": "Rogen Wendin", "amount": 48},
+        {"rep": "Bail Ta'em", "amount": 65},
+        {"rep": "Trins Bardok", "amount": 65}
+      ]
+    }
+  ],
+
+  "marks": [
+    {
+      "type": "rect",
+      "from": {"data": "table"},
+      "encode": {
+        "update": {
+          "x": {"scale": "x", "value": 0},
+          "x2": {"scale": "x", "field": "amount"},
+          "y": {"scale": "y", "field": "rep"},
+          "height": {"scale": "y", "band": 1},
+          "fill": {"value": "#e45621"}
+        },
+        "hover": {
+          "fill": {"value": "#FDECB0"}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "align": {"value": "center"},
+          "baseline": {"value": "bottom"},
+          "fill": {"value": "#333"}
+        },
+        "update": {
+          "x": {"scale": "x", "signal": "tooltip.rep", "band": 0.5},
+          "y": {"scale": "y", "signal": "tooltip.amount", "offset": -2},
+          "text": {"signal": "tooltip.amount"},
+          "fillOpacity": [
+            {"test": "datum === tooltip", "value": 0},
+            {"value": 1}
+          ]
+        }
+      }
+    }
+  ],
+
+  "scales": [
+    {
+      "name": "x",
+      "type": "linear",
+      "domain": {"data": "table", "field": "amount"},
+      "range": "width",
+      "nice": true
+    },
+    {
+      "name": "y",
+      "type": "band",
+      "domain": {
+        "data": "table", "field": "rep",
+        "sort": {"op": "max", "field": "amount", "order": "descending"}
+      },
+      "range": "height",
+      "padding": 0.1
+    }
+  ],
+
+  "axes": [
+    {
+      "scale": "x",
+      "orient": "bottom",
+      "format": "$,d",
+      "tickCount": 5
+    },
+    {
+      "scale": "y",
+      "orient": "left",
+      "encode": {
+        "labels": {
+          "update": { 
+            "fontSize": { "value": 16 }
+          }
+        }
+      }
+    }
+  ]
+}

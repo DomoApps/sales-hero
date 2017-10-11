@@ -125,21 +125,18 @@
 	color: #d4d4d4;
 }
 
-.c3 .c3-axis path.domain {
-	display: none;
+/* chart tooltips overrides*/
+.vg-tooltip.dark-theme {
+	font-family: 'Open Sans', sans-serif;
+	background-color: rgba(0, 0, 0, 0.9);
 }
 
-.c3 .c3-axis .tick text {
-	font-size: 12px;
-	fill: #d4d4d4;
+.vg-tooltip.dark-theme td.key {
+	color: white;
+	font-weight: 600;
 }
 
-.c3 .c3-axis .tick line {
-	display: none;
-}
-
-.c3 .c3-grid line {
-	stroke: #333;
-	stroke-opacity: 0.85;
-	stroke-dasharray: inherit;
+.vg-tooltip.dark-theme td.value {
+	color: rgba(255, 255, 255, 0.75);
+	font-weight: 300;
 }
