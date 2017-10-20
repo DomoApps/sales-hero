@@ -1,4 +1,5 @@
 (function(DataService, ChartService) {
+  // css selectors for document queries
   var SELECTORS = {
     repFilter: 'select[name="rep-name"]',
     summaryContainer: '.summary-container',
@@ -7,6 +8,7 @@
     loader: '.loader',
   };
 
+  // initial load
   window.onload = function() {
     document.querySelector(SELECTORS.repFilter).onchange = handleFilterChange;
     
@@ -47,7 +49,7 @@
     })
   }
 
-
+  // get currently selected filter option
   function getSelectedSalesRep() {
     var rep = document.querySelector(SELECTORS.repFilter).value;
     return (rep === '' || !rep) ? null : rep; 

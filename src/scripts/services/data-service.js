@@ -1,7 +1,8 @@
 var DataService = (function(domo, Query) {
-	var isLoading = true;
+	var service = {};
 	
-	function getRepList() {
+	// unique list of sales reps for filter menu
+	service.getRepList = function() {
 		return (new Query())
 			.select(['rep'])
 			.groupBy(['rep'])
@@ -12,7 +13,8 @@ var DataService = (function(domo, Query) {
 			});
 	}
 
-	function getTotalSales(filter) {
+	// summary tile #1
+	service.getTotalSales = function(filter) {
 		var query = (new Query())
 			.select(['amount'])
 			.aggregate('amount', 'sum');
@@ -29,7 +31,8 @@ var DataService = (function(domo, Query) {
 			});
 	}
 
-	function getTopSale(filter) {
+	// summary tile #2
+	service.getTopSale = function(filter) {
 		var query = (new Query())
 			.select(['client', 'amount'])
 			.orderBy('amount', 'desc')
@@ -47,7 +50,8 @@ var DataService = (function(domo, Query) {
 			})
 	}
 
-	function getLatestSale(filter) {
+	// summary tile #3
+	service.getLatestSale = function(filter) {
 		var query = (new Query())
 			.select(['client', 'amount'])
 			.orderBy('date', 'descending')
@@ -65,7 +69,8 @@ var DataService = (function(domo, Query) {
 			})
 	}
 
-	function getSaleCount(filter) {
+	// summary tile #4
+	service.getSaleCount = function(filter) {
 		var query = (new Query())
 			.select(['rep'])
 			.aggregate('rep', 'count');
@@ -83,7 +88,8 @@ var DataService = (function(domo, Query) {
 			})			
 	}
 
-	function getTopClient(filter) {
+	// summary tile #5
+	service.getTopClient = function(filter) {
 		var query = (new Query())
 			.select(['client', 'amount'])
 			.groupBy('client');
@@ -105,7 +111,8 @@ var DataService = (function(domo, Query) {
 			});
 	}
 	
-	function getSummary(filter) {
+	// helper function to get all summary tiles
+	service.getSummary = function(filter) {
     return Promise.all([
 			getTotalSales(filter),
 			getTopSale(filter),		
@@ -115,14 +122,16 @@ var DataService = (function(domo, Query) {
     ]);
   }
 
-  function getRepPerformance() {
+	// get total sales by rep
+  service.getRepPerformance = function() {
 		return (new Query())
 			.select(['rep', 'amount'])
 			.groupBy(['rep'])
 			.fetch('sales');
   }
 
-  function getSalesPerformance(filter) {
+	// get total sales by month
+  service.getSalesPerformance = function(filter) {
 		var query = (new Query())
 			.select(['date', 'amount'])
 			.dateGrain('date', 'month');
@@ -132,11 +141,5 @@ var DataService = (function(domo, Query) {
 		return query.fetch('sales');
   }
 
-  return {
-		getRepList: getRepList,
-    getSummary: getSummary,
-    getRepPerformance: getRepPerformance,
-		getSalesPerformance: getSalesPerformance,
-		isLoading: isLoading,
-	};
+  return service;
 })(domo, Query);
