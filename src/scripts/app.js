@@ -10,41 +10,15 @@
   window.onload = function() {
     document.querySelector(SELECTORS.repFilter).onchange = handleFilterChange;
     
-    DataService.getRepList().then(function(list) {
-      // get the rep filter menu
-      var select = document.querySelector(SELECTORS.repFilter);
-      
-      // add a default "Team" option
-      var defaultOption = document.createElement('option');
-      defaultOption.text = 'Full Team';
-      defaultOption.value = '';
-      select.appendChild(defaultOption);
-
-      // add each rep from the data
-      list.forEach(function(name) {
-        var option = document.createElement('option');
-        option.value, option.text = name;
-        select.appendChild(option);
-      });
-
-      // one-time rendering of performance rankings
-      buildTopPerformers();
-
-      // update filter-based values
-      handleFilterChange();
-    });    
+    // TODO: add logic to populate filter menu with rep names
+    isLoading(false);
   }
 
   function handleFilterChange() {
-    isLoading(true);
     var selectedRep = getSelectedSalesRep();
     
-    Promise.all([
-      buildSummaryTiles(selectedRep),
-      buildSalesRepPerformance(selectedRep)
-    ]).then(function() {
-      isLoading(false);
-    })
+    // TODO: refresh data with change in filter
+    console.log('Selected Filter: ', selectedRep);
   }
 
 
@@ -54,40 +28,15 @@
   }
 
   function buildSummaryTiles(filter) {
-    return DataService.getSummary(filter).then(function(data) {
-      var container = document.querySelector(SELECTORS.summaryContainer);
-      
-      // remove existing children
-      while (container.firstChild) {
-        container.removeChild(container.firstChild);
-      }
-
-      // loop over rows in data
-      data.forEach(row => {
-        var html = `
-          <div class="card">
-            <div class="card-title">${row.label}</div>
-            <div class="card-content -numeric">${ChartService.formatCurrency(row.value, row.format)}</div>
-          </div>
-        `;
-
-        container.insertAdjacentHTML('beforeend', html);
-      });
-    });
+    // TODO: add logic to get sales summary data and build summary tiles
   }
 
   function buildTopPerformers(filter) {
-    return DataService.getRepPerformance(filter).then(function(data) {
-      const chart = document.querySelector(SELECTORS.repChart);
-      ChartService.drawRepChart(chart, data)
-    });
+    // TODO: add logic to get sales by rep and build a chart
   }
 
   function buildSalesRepPerformance(filter) {
-    return DataService.getSalesPerformance(filter).then(data => {
-      const chart = document.querySelector(SELECTORS.salesChart);
-      ChartService.drawSalesChart(chart, data);
-    });
+    // TODO: add logic to get total sales by date and build a chart
   }
 
   function isLoading(loading) {
