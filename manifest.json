@@ -6,40 +6,36 @@
     "width": 5,
     "height": 3
   },
-  "mapping": [
-    {
-      "alias": "sales",
-      "dataSetId": "93a5b974-1aac-49fc-ba9a-a67dff658be6",
-      "fields": [
-        {
-          "alias": "rep",
-          "columnName": "Sales Rep"
-        },
-        {
-          "alias": "email",
-          "columnName": "Rep Email"
-        },
-        {
-          "alias": "client",
-          "columnName": "Client Name"
-        },
-        {
-          "alias": "date",
-          "columnName": "Sales Date"
-        },
-        {
-          "alias": "amount",
-          "columnName": "Sales Amount"
-        }
-      ]
-    }
-  ],
+  "mapping": [{
+    "alias": "sales",
+    "dataSetId": "93a5b974-1aac-49fc-ba9a-a67dff658be6",
+    "fields": [{
+        "alias": "rep",
+        "columnName": "Sales Rep"
+      },
+      {
+        "alias": "email",
+        "columnName": "Rep Email"
+      },
+      {
+        "alias": "client",
+        "columnName": "Client Name"
+      },
+      {
+        "alias": "date",
+        "columnName": "Sales Date"
+      },
+      {
+        "alias": "amount",
+        "columnName": "Sales Amount"
+      }
+    ]
+  }],
   "ignore": [
     "package.json",
     "package-lock.json",
     "scripts/*",
     "node_modules/*",
     "data/*"
-  ],
-  "id": "b94db842-b745-48ce-8918-4000f002e193"
+  ]
 }
