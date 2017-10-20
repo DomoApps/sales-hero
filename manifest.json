@@ -8,14 +8,14 @@
   },
   "mapping": [{
     "alias": "sales",
-    "dataSetId": "93a5b974-1aac-49fc-ba9a-a67dff658be6",
+    "dataSetId": "f8db847e-930d-4e4f-a679-24539f00a63e",
     "fields": [{
         "alias": "rep",
         "columnName": "Sales Rep"
       },
       {
         "alias": "email",
-        "columnName": "Rep Email"
+        "columnName": "Email"
       },
       {
         "alias": "client",
