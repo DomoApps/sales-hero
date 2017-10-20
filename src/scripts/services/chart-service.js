@@ -1,4 +1,37 @@
 var ChartService = (function (vega, vegaTooltip, numeral) {
+  var service = {};
+
+  service.formatCurrency = function(number, fm) {
+    var format = (fm) ? fm : '$0.0a';
+    return numeral(number).format(format);
+  }
+
+  service.drawRepChart = function(element, data) {
+    vega
+      .loader()
+      .load('/src/assets/charts/rep.spec.json')
+      .then(function (config) {
+        var json = JSON.parse(config);
+        json.data[0].values = data;
+
+        render(json, element);
+      });
+  }
+
+  service.drawSalesChart = function(element, data) {
+    vega
+      .loader()
+      .load('/src/assets/charts/sales.spec.json')
+      .then(function (config) {
+        var json = JSON.parse(config);
+        json.data[0].values = data;
+
+        render(json, element);
+      });
+  }
+
+  // ==== Private functions ====
+
   function render(spec, element) {
     var view = new vega
       .View(vega.parse(spec))
@@ -21,39 +54,6 @@ var ChartService = (function (vega, vegaTooltip, numeral) {
       colorTheme: 'dark'
     });    
   }
-
-  function formatCurrency(number, fm) {
-    var format = (fm) ? fm : '$0.0a';
-    return numeral(number).format(format);
-  }
-
-  function drawRepChart(element, data) {
-    vega
-      .loader()
-      .load('/src/assets/charts/rep.spec.json')
-      .then(function (config) {
-        var json = JSON.parse(config);
-        json.data[0].values = data;
-
-        render(json, element);
-      });
-  }
-
-  function drawSalesChart(element, data) {
-    vega
-      .loader()
-      .load('/src/assets/charts/sales.spec.json')
-      .then(function (config) {
-        var json = JSON.parse(config);
-        json.data[0].values = data;
-
-        render(json, element);
-      });
-  }
-
-  return {
-    formatCurrency: formatCurrency, 
-    drawRepChart: drawRepChart, 
-    drawSalesChart: drawSalesChart
-  };
+  
+  return service;
 })(vega, vegaTooltip, numeral);
