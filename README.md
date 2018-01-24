@@ -31,7 +31,7 @@ This app comes with a `package.json` which includes a few npm scripts for conven
 1. Clone repo
 
 ```
-git clone #Todo
+git clone git@github.com:DomoApps/sales-hero.git
 ```
 
 2. Change directory to the new project and install dependencies
