@@ -1,4 +1,6 @@
 # Sales Hero
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FDomoApps%2Fsales-hero.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FDomoApps%2Fsales-hero?ref=badge_shield)
+
 
 ## Sample Dev Studio App
 
@@ -67,3 +69,7 @@ Once you've published your design, you can start the local dev server to start m
 ```
 npm start
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FDomoApps%2Fsales-hero.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FDomoApps%2Fsales-hero?ref=badge_large)
